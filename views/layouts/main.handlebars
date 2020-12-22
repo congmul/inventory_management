@@ -25,6 +25,36 @@
     <title>Inventory Management System</title>
 </head>
 <body>
+	<nav class="members_fixed_btn">
+		<div class="nav-wrapper">
+			<a href="/" class="brand-logo center"><img src="" width="90px" alt="brand image"></a>
+			<a href="#" data-activates="modible-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="/">Lists</a></li>
+				<li><a href="/post">Post</a></li>
+				<li><a href="/account">Account</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+			<ul class="side-nav" id="modible-demo">
+				<!-- id should match data-activates-->
+				<li class="orange darken-3" style="padding: 0.5rem; margin-bottom: 20px"><a href="#"><img
+							src="" width="45px"><sup
+							style="font-size:20px; margin-left:35px; color:white;">BEAR SHARE</sup></a></li>
+				<li><a href="/">Lists</a></li>
+				<li><a href="/post">Post</a></li>
+				<li><a href="/account">Account</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+			<ul class="nav-wrapper right hide-on-large-only" id="user_account_id">
+				<!-- id should match data-activates-->
+				<li><a href="/account"><i class="fas fa-user-circle" style="font-size:2.5rem;"></i></a></li>
+			</ul>
+
+		</div>
+
+	</nav>
+
+
     {{{ body }}}
 
 
@@ -32,9 +62,5 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Materialize Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <!-- Public Js -->
-	<script type="text/javascript" src="/js/signup.js"></script>
-	<script type="text/javascript" src="/js/login.js"></script>
 </body>
 </html>

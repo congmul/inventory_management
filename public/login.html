@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reset CSS -->
+	<link href="/stylesheets/reset.css" rel="stylesheet">
+
+	<!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Google Font CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+	
+    <!-- Customized CSS-->
+	<link href="/stylesheets/style.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+
+    <!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Inventory Management System</title>
 </head>
-
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
-    </div>
-  </nav>
-  <div class="container">
+
+<div class="container center center-align">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Login Form</h2>
-        <form class="login">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default">Login</button>
-        </form>
-        <br />
-        <p>Or sign up <a href="/">here</a></p>
-      </div>
+        <h3 class="orange-text text-darken-3">Hello administrator</h3>
     </div>
-  </div>
+    <div id="alert-box" class="row">
+        <div class="col s12">
+            <div id="alert-panel" class="card-panel red lighten-2" style="display: none">
+                <span>Incorrect email and/or password.</span>
+            </div>
+        </div>
+    </div>
+    <form class="login">
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Enter email address" id="email-input" type="email" class="validate" required="true">
+                <label for="email">Email <sup><i class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Enter password" id="password-input" type="password" class="validate" required="true">
+                <label for="password">Password <sup><i class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+            </div>
+        </div>
+        <button type="submit" class="btn orange darken-3 waves-effect" id="loginBtn">Log in</button>
+    </form>
+</div>
+</div>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/login.js"></script> -->
+<!-- jQuery Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Materialize Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+<!-- Public Js -->
+<script type="text/javascript" src="/js/login.js"></script>
 </body>
-
 </html>
