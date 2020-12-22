@@ -38,3 +38,28 @@ a {
 .starIcon{
   font-size:5px;
 }
+
+#documentTemplate table th {
+  font-weight: bold;
+}
+#documentTemplate table, 
+#documentTemplate table th, 
+#documentTemplate table td {
+  border: 1px solid grey;
+  text-align: center;
+  color: grey;
+}
+
+#documentTemplate{
+  margin-top:50px;
+  color: grey;
+}
+#packages-Uploaded {
+  display: none;
+}
+#packages-Uploaded table, 
+#packages-Uploaded table th, 
+#packages-Uploaded table td {
+  border: 1px solid black;
+  text-align: center;
+}

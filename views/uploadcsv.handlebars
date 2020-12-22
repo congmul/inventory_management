@@ -1,12 +1,49 @@
-<div class="container ">	        
-			<header class="row">
-					<h4>Upload your CSV File</h4>
-            </header>  
-             	
-			<div class="row">
-					<form>
-						<input type="file" name="File Upload" id="csvFileUpload" accept=".csv" />
-                        <input type="submit" id="uploadcsvbtn">
-					</form>
-			</div>
-		</div>		
+<div class="container ">
+	<header class="row">
+		<h4>Upload your CSV File for Packages</h4>
+	</header>
+
+	<div class="row">
+		<form>
+			<input type="file" name="File Upload" id="csvFileUpload" accept=".csv" />
+			<button type="submit" id="checking-csv-btn">Check the file</button>
+		</form>
+	</div>
+	<div class="row" id="documentTemplate">
+		<h5>Document Template</h5>
+		<table>
+		<tr>
+			<th>category</th>
+			<th>description</th>
+			<th>group_code</th>
+			<th>dealer_price</th>
+		</tr>
+		<tr>
+			<td>Zildjian</td>
+			<td>Ki Country pack</td>
+			<td>A391</td>
+			<td>512</td>
+		</tr>
+		<tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		</tr>
+		</table>
+	</div>
+	<div class="row" id="packages-Uploaded">
+		<button type="submit" class="btn black-text blue lighten-4 waves-effect" id="uploadcsvbtn" style="margin: 10px 0;">Upload the file</button>
+		<table id="table-packages-Uploaded">
+		<tr>
+			<th>category</th>
+			<th>description</th>
+			<th>group_code</th>
+			<th>dealer_price</th>
+		</tr>
+		</table>
+		<form>
+			<button type="submit" class="btn black-text blue lighten-4 waves-effect" id="uploadcsvbtn" style="margin: 10px 0;">Upload the file</button>
+		</form>
+	</div>
+</div>
