@@ -25,29 +25,29 @@
     <title>Inventory Management System</title>
 </head>
 <body>
-	<nav class="members_fixed_btn">
-		<div class="nav-wrapper">
-			<a href="/" class="brand-logo center"><img src="" width="90px" alt="brand image"></a>
+	<nav class="blue lighten-4 black-text">
+		<div class="nav-wrapper nav-text">
+			<a href="/" class="brand-logo"><img src="/img/wavemg_logo.png" width="200px" alt="brand image" style="margin-top:10px;"></a>
 			<a href="#" data-activates="modible-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="/">Lists</a></li>
-				<li><a href="/post">Post</a></li>
-				<li><a href="/account">Account</a></li>
+				<li><a href="/">HOME</a></li>
+				<li><a href="/viewAll">View All</a></li>
+				<li><a href="/itemIn">Item In</a></li>
+				<li><a href="/itemOut">Item Out</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 			<ul class="side-nav" id="modible-demo">
 				<!-- id should match data-activates-->
-				<li class="orange darken-3" style="padding: 0.5rem; margin-bottom: 20px"><a href="#"><img
-							src="" width="45px"><sup
-							style="font-size:20px; margin-left:35px; color:white;">BEAR SHARE</sup></a></li>
-				<li><a href="/">Lists</a></li>
-				<li><a href="/post">Post</a></li>
-				<li><a href="/account">Account</a></li>
+				<li class="blue lighten-4" style="padding: 0.5rem; margin-bottom: 20px"><a href="/"><img
+							src="/img/wavemg_logo.png" width="100px"></a></li>
+				<li><a href="/">View All</a></li>
+				<li><a href="/post">Item In</a></li>
+				<li><a href="/account">Item Out</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 			<ul class="nav-wrapper right hide-on-large-only" id="user_account_id">
 				<!-- id should match data-activates-->
-				<li><a href="/account"><i class="fas fa-user-circle" style="font-size:2.5rem;"></i></a></li>
+				<li><a href="#"><i class="fas fa-user-circle" style="font-size:2.5rem;"></i></a></li>
 			</ul>
 
 		</div>
@@ -58,9 +58,44 @@
     {{{ body }}}
 
 
+	<footer class="page-footer blue lighten-4">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 m8 s12" style="margin-bottom: 10px;">
+					<h5 class="black-text">Inventory Management System</h5>
+					<p class="black-text text-lighten-4"></p>
+                    <div class="row">
+                        <div class="col l5 m5 s12" style="margin-left:10px;">
+                            <ul>
+                                <li><a class="grey-text" href="/">View All</a></li>
+                                <li><a class="grey-text" href="#">Add new item</a></li>
+                            </ul>
+                        </div>
+                        <div class="col l5 m5 s12" style="margin-left:10px;">
+                            <ul>
+                                <li><a class="grey-text" href="/itemIn">Item In</a></li>
+                                <li><a class="grey-text" href="/itemOut">Item Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container center black-text">
+				© 2020 Copyright Wavemg corp. 
+			</div>
+		</div>
+	</footer>
+
     <!-- jQuery Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Materialize Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<!-- this is for MarterializeCSS-->
+	<script>
+		$(".button-collapse").sideNav();
+	</script>
 </body>
 </html>

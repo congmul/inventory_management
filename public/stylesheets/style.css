@@ -2,3 +2,17 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.nav-text{
+  color: black;
+}
+
+ul li a {
+  color:black;
+}
+
+@media (max-width: 992px){
+  .brand-logo{
+    text-align: center;
+  }
+}
