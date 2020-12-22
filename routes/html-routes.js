@@ -18,4 +18,12 @@ module.exports = function(app) {
   app.get("/signup", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
+
+  app.get("/newPackage", (req, res) => {
+    if (req.user) {
+      res.render("newPackage");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
 };
