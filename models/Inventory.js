@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
+        size: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: false,

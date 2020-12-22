@@ -55,4 +55,38 @@ module.exports = function(app) {
       });
     });
 
+    app.get("/newItem", (req, res) => {
+      if (req.user) {
+        let packageLists = [];
+        db.Packages.findAll().then((data) => {
+          for(let i = 0; i < data.length; i++){
+            // console.log(data[i].dataValues.id);
+            // console.log(data[i].dataValues.description);
+            let tempObj = {}
+            tempObj["id"] = data[i].dataValues.id; 
+            tempObj["discription"] = data[i].dataValues.description;
+            packageLists.push(tempObj);
+          }
+          console.log(packageLists);
+          res.render("newItem", {packageLists : packageLists});
+        });
+        
+      }else{
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+      }
+    });
+
+
+
+    // Route for add a new cymbal
+    app.post("/api/newitem", (req, res) => {
+      console.log(req.body);
+      db.Inventory.create(req.body).then((data) => {
+        res.status(200);
+        res.redirect("back");
+      }).catch((err) => {
+        res.status(500).json(err);
+      });
+    });
+
 };
