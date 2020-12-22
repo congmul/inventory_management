@@ -26,4 +26,13 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
   });
+
+  app.get("/uploadCSV", (req, res) => {
+    if (req.user) {
+      res.render("uploadcsv");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
 };
