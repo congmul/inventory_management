@@ -14,10 +14,10 @@ $(document).ready(function () {
             for(let i = 1; i < csvData.length; i++){
                 let tempArr =  csvData[i].split(",");
                     contents.push({
-                        "category" : tempArr[0],
-                        "description" :tempArr[1],
-                        "group_code" :tempArr[2],
-                        "dealer_price" :tempArr[3],
+                        "category" : tempArr[0].trim(),
+                        "description" :tempArr[1].trim(),
+                        "group_code" :tempArr[2].trim(),
+                        "dealer_price" :tempArr[3].trim(),
                     });
                 let trEl = $("<tr>");
                 for(let j = 0; j < tempArr.length; j++){
