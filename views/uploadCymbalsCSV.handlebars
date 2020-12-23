@@ -1,0 +1,66 @@
+<div class="container ">
+	<header class="row">
+		<h4>Upload your CSV File for Cymbals</h4>
+	</header>
+
+	<div class="row">
+		<form>
+			<input type="file" name="File Upload" id="csvFile-Cymbal-Upload" accept=".csv" />
+			<button type="submit" id="checking-csv-btn-cymbal">Check the file</button>
+		</form>
+	</div>
+	<div class="row" id="documentTemplate">
+		<h5>Document Template</h5>
+		<table>
+		<tr>
+			<th>category01</th>
+			<th>category02</th>
+			<th>size</th>
+			<th>description</th>
+			<th>code</th>
+			<th>qty</th>
+			<th>ebay_price</th>
+			<th>website_price</th>
+			<th>group_id</th>
+		</tr>
+		<tr>
+			<td>Zildjian</td>
+			<td>Crash</td>
+			<td>17</td>
+			<td>K Custom hybrid </td>
+			<td>K1217</td>
+			<td>2</td>
+			<td>207</td>
+			<td>207</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		</tr>
+		</table>
+	</div>
+	<div class="row" id="cymbal-Uploaded">
+		<button type="submit" class="btn black-text blue lighten-4 waves-effect" id="upload-cymbal-csv-btn" style="margin: 10px 0;">Upload the file</button>
+		<table id="table-cymbal-Uploaded">
+		<tr>
+			<th>Category01</th>
+			<th>Category02</th>
+			<th>Size</th>
+			<th>Description</th>
+			<th>Code</th>
+			<th>QTY</th>
+			<th>eBay Price</th>
+			<th>Website Price</th>
+			<th>Group Code</th>
+		</tr>
+		</table>
+	</div>
+</div>

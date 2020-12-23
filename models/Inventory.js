@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
         },
         code: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
             len: [1]
         },

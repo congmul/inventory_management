@@ -89,4 +89,15 @@ module.exports = function(app) {
       });
     });
 
+       // Route for add a cymbals
+       app.post("/api/cymbals", (req, res) => {
+        console.log(req.body.contents);
+        db.Inventory.bulkCreate(req.body.contents).then((data) => {
+          res.status(200);
+          res.redirect("back");
+        }).catch((err) => {
+          res.status(500).json(err);
+        });
+      });
+
 };

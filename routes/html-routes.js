@@ -35,4 +35,12 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/uploadCymbalsCSV", (req, res) => {
+    if (req.user) {
+      res.render("uploadCymbalsCSV");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
 };

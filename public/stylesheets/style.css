@@ -63,3 +63,13 @@ a {
   border: 1px solid black;
   text-align: center;
 }
+
+#cymbal-Uploaded {
+  display: none;
+}
+#cymbal-Uploaded table, 
+#cymbal-Uploaded table th, 
+#cymbal-Uploaded table td {
+  border: 1px solid black;
+  text-align: center;
+}
