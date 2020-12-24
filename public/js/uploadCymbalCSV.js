@@ -40,7 +40,7 @@ $(document).ready(function () {
     $("#upload-cymbal-csv-btn").on("click", (e) =>{
         e.preventDefault();
         console.log(contents);
-        $.post("/api/cymbals",{contents:contents}).then((res) =>{
+        $.post("/api/newcymbals",{contents:contents}).then((res) =>{
             alert("The file is uploaded");
             location.reload();
         });

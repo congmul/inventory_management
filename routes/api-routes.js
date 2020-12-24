@@ -34,20 +34,9 @@ module.exports = function(app) {
 
 
   // --> GET ROUTE!!
-  // Add New Item Page with Package ID & Name
+  // Add New Item Page
   app.get("/newItem", (req, res) => {
     if (req.user) {
-      // let packageLists = [];
-      // db.Packages.findAll().then((data) => {
-      //   for(let i = 0; i < data.length; i++){
-      //     let tempObj = {}
-      //     tempObj["id"] = data[i].dataValues.id; 
-      //     tempObj["discription"] = data[i].dataValues.description;
-      //     packageLists.push(tempObj);
-      //   }
-      //   // console.log(packageLists);
-      //   res.render("newItem", {packageLists : packageLists});
-      // });
       res.render("newItem");
     }else{
       res.sendFile(path.join(__dirname, "../public/login.html"));
@@ -81,27 +70,27 @@ module.exports = function(app) {
 
 
 
-    // Route for add a new cymbal
-    app.post("/api/newitem", (req, res) => {
-      console.log(req.body);
-      db.Inventory.create(req.body).then((data) => {
-        res.status(200);
-        res.redirect("back");
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-    });
+    // // Route for add a new cymbal
+    // app.post("/api/newitem", (req, res) => {
+    //   console.log(req.body);
+    //   db.Inventory.create(req.body).then((data) => {
+    //     res.status(200);
+    //     res.redirect("back");
+    //   }).catch((err) => {
+    //     res.status(500).json(err);
+    //   });
+    // });
 
-       // Route for add a cymbals
-       app.post("/api/cymbals", (req, res) => {
-        console.log(req.body.contents);
-        db.Inventory.bulkCreate(req.body.contents).then((data) => {
-          res.status(200);
-          res.redirect("back");
-        }).catch((err) => {
-          res.status(500).json(err);
-        });
-      });
+      //  // Route for add a cymbals
+      //  app.post("/api/cymbals", (req, res) => {
+      //   console.log(req.body.contents);
+      //   db.Inventory.bulkCreate(req.body.contents).then((data) => {
+      //     res.status(200);
+      //     res.redirect("back");
+      //   }).catch((err) => {
+      //     res.status(500).json(err);
+      //   });
+      // });
 
 
       // Route for get Package's information with cymbals

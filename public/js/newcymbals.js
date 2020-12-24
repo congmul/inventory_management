@@ -10,7 +10,7 @@ $(document).ready(function() {
     let website_price = $("#website-price-input");
     let groupId = $("#group-id");
 
-    $("#addItemBtn").on("click", (e) => {
+    $("#add-Cymbal-Btn").on("click", (e) => {
         e.preventDefault();
         
         const newItem = {
@@ -24,8 +24,8 @@ $(document).ready(function() {
             website_price : website_price.val().trim(),
             group_id : groupId.val().trim(),
         }
-        console.log(newItem);
-        $.post("/api/newitem", newItem).then((result) =>{
+        // console.log(newItem);
+        $.post("/api/newcymbal", newItem).then((result) =>{
             console.log(result);
             category01.val("");
             category02.val("");
