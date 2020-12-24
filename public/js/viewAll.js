@@ -1,5 +1,64 @@
 $(document).ready(() => {
     const displayPackwithCymbals = $("#displayPackwithCymbals");
+    const searchWindowOnView = $("#searchWindowOnView");
+
+    $("#cymbal-menu-On-view").on("click", (e) => {
+        e.preventDefault();
+
+        let query = `
+        <form class="col s12 m12 l12">
+            <div class="row">
+                <div class="col s12 m3">
+                    <select name="category01" class="browser-default post_input_boader validateCat" id="category01onView">
+                        <option value="" disabled selected>Category01</option>
+                        <option value="all">All</option>
+                        <option value="zildjian">Zildjian</option>
+                        <option value="sabian">Sabian</option>
+                    </select>
+                </div>
+                <div class="col s12 m3">
+                    <select name="category02" class="browser-default post_input_boader validateCat" id="category02onView">
+                        <option value="" disabled selected>Category02</option>
+                        <option value="all">All</option>
+                        <option value="ride">Ride</option>
+                        <option value="hihats">Hihats</option>
+                        <option value="crash">Crash</option>
+                        <option value="splash">Splash</option>
+                    </select>
+                </div>
+                <div class="col s12 m3">
+                    <select name="Size" class="browser-default post_input_boader validateCat" id="sizeonView">
+                        <option value="" disabled selected>Size</option>
+                        <option value="all">All</option>
+                        <option value="14">14 inch</option>
+                        <option value="15">15 inch</option>
+                        <option value="16">16 inch</option>
+                        <option value="17">17 inch</option>
+                        <option value="18">18 inch</option>
+                        <option value="19">19 inch</option>
+                        <option value="20">20 inch</option>
+                        <option value="21">21 inch</option>
+                    </select>
+                </div>
+                <div class="col s12 m3">
+                <button id="searchCymbals" class="btn black-text waves-effect">Search</button>
+                </div>
+            </div>
+        </form>
+        `;
+        searchWindowOnView.html(query);
+
+    });
+
+    $("#shure-menu-On-view").on("click", (e) => {
+        e.preventDefault();
+        searchWindowOnView.text("Not Yet!!");
+    });
+    
+    $("#searchCymbals").on("click", (e) =>{
+        e.preventDefault();
+        console.log("text");
+    })
 
     $(".cymbal-package-btn").on("click", (e) => {
         e.preventDefault();

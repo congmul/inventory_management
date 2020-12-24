@@ -32,6 +32,30 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+
+  // --> GET ROUTE!!
+  // Add New Item Page with Package ID & Name
+  app.get("/newItem", (req, res) => {
+    if (req.user) {
+      // let packageLists = [];
+      // db.Packages.findAll().then((data) => {
+      //   for(let i = 0; i < data.length; i++){
+      //     let tempObj = {}
+      //     tempObj["id"] = data[i].dataValues.id; 
+      //     tempObj["discription"] = data[i].dataValues.description;
+      //     packageLists.push(tempObj);
+      //   }
+      //   // console.log(packageLists);
+      //   res.render("newItem", {packageLists : packageLists});
+      // });
+      res.render("newItem");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
+  // GET ROUTE!! <--
+
     // Route for add a Package
     app.post("/api/pakage", (req, res) => {
       console.log(req.body);
@@ -44,7 +68,7 @@ module.exports = function(app) {
 
     });
 
-    // Route for add a Packages
+    // Route for add Packages
     app.post("/api/packages", (req, res) => {
       console.log(req.body.contents);
       db.Packages.bulkCreate(req.body.contents).then((data) => {
@@ -53,27 +77,6 @@ module.exports = function(app) {
       }).catch((err) => {
         res.status(500).json(err);
       });
-    });
-
-    app.get("/newItem", (req, res) => {
-      if (req.user) {
-        let packageLists = [];
-        db.Packages.findAll().then((data) => {
-          for(let i = 0; i < data.length; i++){
-            // console.log(data[i].dataValues.id);
-            // console.log(data[i].dataValues.description);
-            let tempObj = {}
-            tempObj["id"] = data[i].dataValues.id; 
-            tempObj["discription"] = data[i].dataValues.description;
-            packageLists.push(tempObj);
-          }
-          console.log(packageLists);
-          res.render("newItem", {packageLists : packageLists});
-        });
-        
-      }else{
-        res.sendFile(path.join(__dirname, "../public/login.html"));
-      }
     });
 
 
