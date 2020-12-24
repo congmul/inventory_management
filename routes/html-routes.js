@@ -20,6 +20,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
+  app.get("/newItem", (req, res) => {
+    if (req.user) {
+      res.render("newItem");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
   app.get("/newPackage", (req, res) => {
     if (req.user) {
       res.render("newPackage");
@@ -28,21 +36,13 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/uploadCSV", (req, res) => {
+  app.get("/uploadPackCSV", (req, res) => {
     if (req.user) {
-      res.render("uploadcsv");
+      res.render("uploadPackCSV");
     }else{
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
   });
-
-  // app.get("/uploadCymbalsCSV", (req, res) => {
-  //   if (req.user) {
-  //     res.render("uploadCymbalsCSV");
-  //   }else{
-  //     res.sendFile(path.join(__dirname, "../public/login.html"));
-  //   }
-  // });
 
   app.get("/viewAll", (req, res) => {
     if (req.user) {

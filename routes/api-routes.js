@@ -32,17 +32,6 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
-
-  // --> GET ROUTE!!
-  // Add New Item Page
-  app.get("/newItem", (req, res) => {
-    if (req.user) {
-      res.render("newItem");
-    }else{
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-    }
-  });
-
   // GET ROUTE!! <--
 
     // Route for add a Package
@@ -67,31 +56,6 @@ module.exports = function(app) {
         res.status(500).json(err);
       });
     });
-
-
-
-    // // Route for add a new cymbal
-    // app.post("/api/newitem", (req, res) => {
-    //   console.log(req.body);
-    //   db.Inventory.create(req.body).then((data) => {
-    //     res.status(200);
-    //     res.redirect("back");
-    //   }).catch((err) => {
-    //     res.status(500).json(err);
-    //   });
-    // });
-
-      //  // Route for add a cymbals
-      //  app.post("/api/cymbals", (req, res) => {
-      //   console.log(req.body.contents);
-      //   db.Inventory.bulkCreate(req.body.contents).then((data) => {
-      //     res.status(200);
-      //     res.redirect("back");
-      //   }).catch((err) => {
-      //     res.status(500).json(err);
-      //   });
-      // });
-
 
       // Route for get Package's information with cymbals
       app.get("/api/package/:id", (req, res) => {
