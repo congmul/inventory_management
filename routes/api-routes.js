@@ -100,4 +100,43 @@ module.exports = function(app) {
         });
       });
 
+
+      // Route for get Package's information with cymbals
+      app.get("/api/package/:id", (req, res) => {
+        if (req.user) {
+          console.log(req.params.id);
+          let packageWithCymbals = [];
+          db.Packages.findAll({
+            where: {
+              id: req.params.id
+            },
+            include : db.Inventory
+          }).then((data) => {
+            // console.log(data[0].dataValues);
+            for(let i=0; i < data[0].dataValues.Inventories.length; i++){
+              packageWithCymbals.push({
+                "category": data[0].dataValues.category,
+                "description_pack": data[0].dataValues.description,
+                "code_pack": data[0].dataValues.group_code,
+                "dealer_price": data[0].dataValues.dealer_price,
+                "code": data[0].dataValues.Inventories[i].dataValues.code,
+                "category02": data[0].dataValues.Inventories[i].category02,
+                "size": data[0].dataValues.Inventories[i].size,
+                "description": data[0].dataValues.Inventories[i].description,
+                "qty": data[0].dataValues.Inventories[i].qty,
+                "ebay_price": data[0].dataValues.Inventories[i].ebay_price,
+                "website_price": data[0].dataValues.Inventories[i].website_price
+              });
+            }
+            console.log(packageWithCymbals);
+            res.json(packageWithCymbals);
+            // console.log(data[0].dataValues.Inventories[0].dataValues);
+            // res.render("newItem", {packageLists : packageLists});
+          });
+          
+        }else{
+          res.sendFile(path.join(__dirname, "../public/login.html"));
+        }
+      });
+
 };

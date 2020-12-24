@@ -1,0 +1,39 @@
+<div class="row"></div>
+<div class="container">
+    <table class="highlight centered">
+        <thead style="font-weight: bold;">
+            <tr>
+                <th>Package Code</th>
+                <th>Category01</th>
+                <th>Category02</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Code</th>
+                <th>QTY</th>
+                <th>eBay Price</th>
+                <th>Website Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each allItems}}
+            <tr>
+                <td><button class="cymbal-package-btn" data-id="{{this.group_id}}">{{this.group_code}}</button></td>
+                <td>{{this.category01}}</td>
+                <td>{{this.category02}}</td>
+                <td>{{this.size}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.code}}</td>
+                <td>{{this.qty}}</td>
+                <td>$ {{this.ebay_price}}</td>
+                <td>$ {{this.website_price}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div id="displayPackwithCymbals"></div>
+
+
+
+</div>
+<div class="row"></div>

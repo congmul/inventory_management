@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{{!-- Reset CSS --}}
 	<link href="/stylesheets/reset.css" rel="stylesheet">
@@ -9,25 +10,27 @@
 	<!-- Materialize CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    {{!-- Google Font CSS --}}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-	
-    <!-- Customized CSS-->
+	{{!-- Google Font CSS --}}
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+
+	<!-- Customized CSS-->
 	<link href="/stylesheets/style.css" rel="stylesheet">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
 
-    <!--Import Google Icon Font-->
+	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Inventory Management System</title>
+	<title>Inventory Management System</title>
 </head>
+
 <body>
 	<nav class="blue lighten-4 black-text">
 		<div class="nav-wrapper nav-text">
-			<a href="/" class="brand-logo"><img src="/img/wavemg_logo.png" width="200px" alt="brand image" style="margin-top:10px;"></a>
+			<a href="/" class="brand-logo"><img src="/img/wavemg_logo.png" width="200px" alt="brand image"
+					style="margin-top:10px;"></a>
 			<a href="#" data-activates="modible-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="/">HOME</a></li>
@@ -55,7 +58,7 @@
 	</nav>
 
 
-    {{{ body }}}
+	{{{ body }}}
 
 
 	<footer class="page-footer blue lighten-4">
@@ -64,31 +67,44 @@
 				<div class="col l6 m8 s12" style="margin-bottom: 10px;">
 					<h5 class="black-text">Inventory Management System</h5>
 					<p class="black-text text-lighten-4"></p>
-                    <div class="row">
-                        <div class="col l5 m5 s12" style="margin-left:10px;">
-                            <ul>
-                                <li><a class="grey-text" href="/">View All</a></li>
-                                <li><a class="grey-text" href="#">Add new item</a></li>
-                            </ul>
-                        </div>
-                        <div class="col l5 m5 s12" style="margin-left:10px;">
-                            <ul>
-                                <li><a class="grey-text" href="/itemIn">Item In</a></li>
-                                <li><a class="grey-text" href="/itemOut">Item Out</a></li>
-                            </ul>
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="col l5 m5 s12" style="margin-left:10px;">
+							<ul>
+								<li><a class="grey-text" href="/">View All</a></li>
+								<li><a class="grey-text" href="#">Add new item</a></li>
+							</ul>
+						</div>
+						<div class="col l5 m5 s12" style="margin-left:10px;">
+							<ul>
+								<li><a class="grey-text" href="/itemIn">Item In</a></li>
+								<li><a class="grey-text" href="/itemOut">Item Out</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copyright">
 			<div class="container center black-text">
-				© 2020 Copyright Wavemg corp. 
+				© 2020 Copyright Wavemg corp.
 			</div>
 		</div>
 	</footer>
 
-    <!-- jQuery Js -->
+
+	<div class="fixed-action-btn">
+		<a class="btn-floating btn-large red">
+			<i class="large material-icons">mode_edit</i>
+		</a>
+		<ul>
+			<li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+			<li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+			<li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+			<li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+		</ul>
+	</div>
+
+	<!-- jQuery Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Materialize Js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -103,6 +119,7 @@
 	<script type="text/javascript" src="/js/uploadcsv.js"></script>
 	<script type="text/javascript" src="/js/newItem.js"></script>
 	<script type="text/javascript" src="/js/uploadCymbalCSV.js"></script>
-	
+	<script type="text/javascript" src="/js/viewAll.js"></script>
 </body>
+
 </html>
