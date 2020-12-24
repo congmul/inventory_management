@@ -25,8 +25,8 @@ $(document).ready(() => {
                     <td>${res[i].description}</td>
                     <td>${res[i].category02}</td>
                     <td>${res[i].size} inch</td>
-                    <td>$ ${res[i].ebay_price}</td>
-                    <td>$ ${res[i].website_price}</td>
+                    <td contenteditable='true'>$ ${res[i].ebay_price}</td>
+                    <td contenteditable='true'>$ ${res[i].website_price}</td>
                 </tr>`
             }
             ebayNet = ebayGross * 0.88;
@@ -71,14 +71,14 @@ $(document).ready(() => {
                     <tr>
                         <td style="font-weight: bold;">ebay : </td>
                         <td>$ ${ebayGross}</td>
-                        <td>12%</td>
+                        <td contenteditable='true'>12%</td>
                         <td>$ ${ebayNet.toFixed(2)}</td>
                         <td>${ebayMargin.toFixed(2)}%</td>
                     </tr>
                     <tr>
                         <td style="font-weight: bold;">website : </td>
                         <td>$ ${websiteGross}</td>
-                        <td>4%</td>
+                        <td contenteditable='true'>4%</td>
                         <td>$ ${websiteNet.toFixed(2)}</td>
                         <td>${websiteMargin.toFixed(2)}%</td>
                     </tr>
