@@ -32,10 +32,10 @@ $(document).ready(function () {
         rdr.readAsText($("#csvFileUpload")[0].files[0]);
     });
 
-    $("#uploadcsvbtn").on("click", (e) =>{
+    $("#uploadpackscsvbtn").on("click", (e) =>{
         e.preventDefault();
         console.log(contents);
-        $.post("/api/packages",{contents:contents}).then((res) =>{
+        $.post("/api/cymbalPacks",{contents:contents}).then((res) =>{
             alert("The file is uploaded");
             location.reload();
         });

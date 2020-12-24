@@ -36,14 +36,6 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/uploadPackCSV", (req, res) => {
-    if (req.user) {
-      res.render("uploadPackCSV");
-    }else{
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-    }
-  });
-
   app.get("/viewAll", (req, res) => {
     if (req.user) {
     db.Inventory.findAll({

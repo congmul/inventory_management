@@ -34,29 +34,6 @@ module.exports = function(app) {
 
   // GET ROUTE!! <--
 
-    // Route for add a Package
-    app.post("/api/pakage", (req, res) => {
-      console.log(req.body);
-      db.Packages.create(req.body).then((data) => {
-        res.status(200);
-        res.redirect("back");
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-
-    });
-
-    // Route for add Packages
-    app.post("/api/packages", (req, res) => {
-      console.log(req.body.contents);
-      db.Packages.bulkCreate(req.body.contents).then((data) => {
-        res.status(200);
-        res.redirect("back");
-      }).catch((err) => {
-        res.status(500).json(err);
-      });
-    });
-
       // Route for get Package's information with cymbals
       app.get("/api/package/:id", (req, res) => {
         if (req.user) {

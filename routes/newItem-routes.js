@@ -35,11 +35,9 @@ module.exports = function (app) {
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
   });
-
   // GET ROUTE!! <--
 
   // POST ROUTE!! -->
-
   // Route for add a new cymbal
   app.post("/api/newcymbal", (req, res) => {
     console.log(req.body);
@@ -61,7 +59,6 @@ module.exports = function (app) {
       res.status(500).json(err);
     });
   });
-
   // POST ROUTE!! <--
   // ============================== FOR CYMBALS <-- ==============================
 

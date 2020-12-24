@@ -5,7 +5,7 @@ $(document).ready(function() {
     let productCodeInput = $("#product_Code_input");
     let dealerPriceInput = $("#dealer_Price_input");
 
-    $("#addCategoryBtn").on("click", (e) => {
+    $("#addPackBtn").on("click", (e) => {
         e.preventDefault();
         
         const newPackage = {
@@ -15,7 +15,7 @@ $(document).ready(function() {
             dealer_price : dealerPriceInput.val()
         }
 
-        $.post("/api/pakage", newPackage).then((result) =>{
+        $.post("/api/cymbalPack", newPackage).then((result) =>{
             console.log(result);
             category.val("");
             descriptionInput.val("");
