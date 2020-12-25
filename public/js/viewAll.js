@@ -23,7 +23,7 @@ $(document).ready(() => {
                         <option value="" disabled selected>Category02</option>
                         <option value="all">All</option>
                         <option value="ride">Ride</option>
-                        <option value="hihats">Hihats</option>
+                        <option value="hi-hats">Hihats</option>
                         <option value="crash">Crash</option>
                         <option value="splash">Splash</option>
                     </select>

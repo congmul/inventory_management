@@ -1,5 +1,6 @@
 // Requiring our models and passport as we've configured it
 let db = require("../models");
+const { Op } = require("sequelize");
 
 module.exports = function (app) {
 
@@ -12,11 +13,30 @@ module.exports = function (app) {
     // --> API Route
     app.get("/api/cymbals/:category01onView/:category02onView/:sizeonView", (req, res) => {
         console.log(req.params);
-        let conditionForCategory01 = req.params.category01onView;
-        let conditionForCategory02 = req.params.category02onView;
-        let conditionForSize = req.params.sizeonView;
+        let firstCondition = {category01 : req.params.category01onView.toLowerCase()};
+        let secondCondition = {category02 : req.params.category02onView.toLowerCase()};
+        let thirdCondition = {size : req.params.sizeonView};
+        // console.log(firstCondition);
+        // console.log(secondCondition);
+        // console.log(thirdCondition);
+        if(req.params.category01onView.toLowerCase() === "all"){
+          firstCondition ={}
+        }
+        if(req.params.category02onView.toLowerCase() === "all"){
+          secondCondition ={}
+        }
+        if(req.params.sizeonView === "all"){
+          thirdCondition ={}
+        }
         if (req.user) {
             db.Inventory.findAll({
+                where: {
+                  [Op.and]: [
+                    firstCondition,
+                    secondCondition,
+                    thirdCondition
+                  ]
+                },
                 include: db.Packages
               } 
               ).then((data) => {
@@ -36,7 +56,6 @@ module.exports = function (app) {
                   });
                 }
                 res.json(allItems);
-                // res.render("viewCymbals", {allItems: allItems});
               });
     }else{
         res.sendFile(path.join(__dirname, "../public/login.html"));
