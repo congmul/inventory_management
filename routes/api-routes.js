@@ -34,6 +34,7 @@ module.exports = function(app) {
 
   // GET ROUTE!! <--
 
+
       // Route for get Package's information with cymbals
       app.get("/api/package/:id", (req, res) => {
         if (req.user) {

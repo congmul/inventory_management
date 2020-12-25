@@ -1,4 +1,6 @@
 $(document).ready(() => {
+
+    // ======================== FOR Cymbals ================================================
     const displayPackwithCymbals = $("#displayPackwithCymbals");
     const searchWindowOnView = $("#searchWindowOnView");
 
@@ -47,20 +49,64 @@ $(document).ready(() => {
         </form>
         `;
         searchWindowOnView.html(query);
-
-    });
-
-    $("#shure-menu-On-view").on("click", (e) => {
-        e.preventDefault();
-        searchWindowOnView.text("Not Yet!!");
     });
     
-    $("#searchCymbals").on("click", (e) =>{
-        e.preventDefault();
-        console.log("text");
-    })
 
-    $(".cymbal-package-btn").on("click", (e) => {
+    $(document).on("click", "#searchCymbals", (e) =>{
+        e.preventDefault();
+        let category01onView = $("#category01onView").val().trim();
+        let category02onView = $("#category02onView").val().trim();
+        let sizeonView = $("#sizeonView").val().trim();
+        $.ajax("api/cymbals/" + category01onView + "/" + category02onView + "/" + sizeonView, {
+            type: "GET"
+        }).then(res => {
+            console.log(res);
+            let cymbalLists = ``;
+            for(let i = 0; i < res.length; i++){
+                cymbalLists += `<tr>
+                    <td><button class="cymbal-package-btn" data-id="${res[i].group_id}">${res[i].group_code}</button></td>
+                    <td>${res[i].category01}</td>
+                    <td>${res[i].category02}</td>
+                    <td>${res[i].size}</td>
+                    <td>${res[i].description}</td>
+                    <td>${res[i].code}</td>
+                    <td>${res[i].qty}</td>
+                    <td>$ ${res[i].ebay_price}</td>
+                    <td>$ ${res[i].website_price}</td>
+                </tr>`
+            }
+            let query = `
+            <!-- Display cymbals -->
+    <table class="highlight centered">
+        <thead style="font-weight: bold;">
+            <tr>
+                <th>Package Code</th>
+                <th>Category01</th>
+                <th>Category02</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Code</th>
+                <th>QTY</th>
+                <th>eBay Price</th>
+                <th>Website Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                ${cymbalLists}
+        </tbody>
+    </table>
+    <div id="displayPackwithCymbals"></div>
+<div class="row"></div>
+<!-- Display cymbals -->
+            `;
+            $("#resultOfsearch").html(query);
+        });
+    });
+
+
+    // When a user click pack's code
+    $(document).on("click", ".cymbal-package-btn", (e) => {
         e.preventDefault();
 
         console.log($(e.target).data("id"));
@@ -93,7 +139,6 @@ $(document).ready(() => {
 
             let ebayMargin =  (ebayNet - res[0].dealer_price) / res[0].dealer_price  * 100;
             let websiteMargin = (websiteNet - res[0].dealer_price) / res[0].dealer_price  * 100;
-        
 
             let query = `  
 <div id="packageWithCymbal" class="modal">
@@ -149,7 +194,6 @@ $(document).ready(() => {
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
     </div>
 </div>`
-          
           displayPackwithCymbals.html(query);
 
           // Implement modal and Open it manually
@@ -158,4 +202,11 @@ $(document).ready(() => {
         })
     });
 
+
+     // ======================== FOR Shure Parts ================================================
+
+    $("#shure-menu-On-view").on("click", (e) => {
+        e.preventDefault();
+        searchWindowOnView.text("Not Yet!!");
+    });
 });

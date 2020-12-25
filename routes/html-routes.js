@@ -38,64 +38,39 @@ module.exports = function(app) {
 
   app.get("/viewAll", (req, res) => {
     if (req.user) {
-    db.Inventory.findAll({
-      include: db.Packages
-    } 
-    ).then((data) => {
-      let allItems = [];
-      for(let i = 0; i < data.length; i++){
-        allItems.push({
-          "group_id": data[i].dataValues.Package.dataValues.id,
-          "group_code": data[i].dataValues.Package.dataValues.group_code,
-          "category01": data[i].dataValues.category01,
-          "category02": data[i].dataValues.category02,
-          "size": data[i].dataValues.size,
-          "description": data[i].dataValues.description,
-          "code": data[i].dataValues.code,
-          "qty": data[i].dataValues.qty,
-          "ebay_price": data[i].dataValues.ebay_price,
-          "website_price": data[i].dataValues.website_price
-        });
-      }
-      console.log(allItems);
-
-      res.render("viewAll", {allItems: allItems});
-    });
+      res.render("viewAll");
     }else{
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
   });
 
-  app.get("/viewAll/:category01/:category02/:size", (req, res) => {
-    if (req.user) {
-      console.log(req.params);
-    // db.Inventory.findAll({
-    //   include: db.Packages
-    // } 
-    // ).then((data) => {
-    //   let allItems = [];
-    //   for(let i = 0; i < data.length; i++){
-    //     allItems.push({
-    //       "group_id": data[i].dataValues.Package.dataValues.id,
-    //       "group_code": data[i].dataValues.Package.dataValues.group_code,
-    //       "category01": data[i].dataValues.category01,
-    //       "category02": data[i].dataValues.category02,
-    //       "size": data[i].dataValues.size,
-    //       "description": data[i].dataValues.description,
-    //       "code": data[i].dataValues.code,
-    //       "qty": data[i].dataValues.qty,
-    //       "ebay_price": data[i].dataValues.ebay_price,
-    //       "website_price": data[i].dataValues.website_price
-    //     });
-    //   }
-    //   console.log(allItems);
+  // app.get("/viewAll", (req, res) => {
+  //   if (req.user) {
+  //   db.Inventory.findAll({
+  //     include: db.Packages
+  //   } 
+  //   ).then((data) => {
+  //     let allItems = [];
+  //     for(let i = 0; i < data.length; i++){
+  //       allItems.push({
+  //         "group_id": data[i].dataValues.Package.dataValues.id,
+  //         "group_code": data[i].dataValues.Package.dataValues.group_code,
+  //         "category01": data[i].dataValues.category01,
+  //         "category02": data[i].dataValues.category02,
+  //         "size": data[i].dataValues.size,
+  //         "description": data[i].dataValues.description,
+  //         "code": data[i].dataValues.code,
+  //         "qty": data[i].dataValues.qty,
+  //         "ebay_price": data[i].dataValues.ebay_price,
+  //         "website_price": data[i].dataValues.website_price
+  //       });
+  //     }
+  //     console.log(allItems);
 
-    //   res.render("viewAll", {allItems: allItems});
-    // });
-    }else{
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-    }
-  });
-
-
+  //     res.render("viewAll", {allItems: allItems});
+  //   });
+  //   }else{
+  //     res.sendFile(path.join(__dirname, "../public/login.html"));
+  //   }
+  // });
 };
