@@ -12,7 +12,7 @@ $(document).ready(() => {
             <div class="row">
                 <div class="col s12 m3">
                     <select name="category01" class="browser-default post_input_boader validateCat" id="category01onView">
-                        <option value="" disabled selected>Category01</option>
+                        <option value="all" disabled selected>Category01</option>
                         <option value="all">All</option>
                         <option value="zildjian">Zildjian</option>
                         <option value="sabian">Sabian</option>
@@ -20,7 +20,7 @@ $(document).ready(() => {
                 </div>
                 <div class="col s12 m3">
                     <select name="category02" class="browser-default post_input_boader validateCat" id="category02onView">
-                        <option value="" disabled selected>Category02</option>
+                        <option value="all" disabled selected>Category02</option>
                         <option value="all">All</option>
                         <option value="ride">Ride</option>
                         <option value="hi-hats">Hihats</option>
@@ -30,7 +30,7 @@ $(document).ready(() => {
                 </div>
                 <div class="col s12 m3">
                     <select name="Size" class="browser-default post_input_boader validateCat" id="sizeonView">
-                        <option value="" disabled selected>Size</option>
+                        <option value="all" disabled selected>Size</option>
                         <option value="all">All</option>
                         <option value="14">14 inch</option>
                         <option value="15">15 inch</option>
@@ -54,6 +54,16 @@ $(document).ready(() => {
 
     $(document).on("click", "#searchCymbals", (e) =>{
         e.preventDefault();
+        if($("#category01onView").val() === null){
+            alert("Select Category01");
+        }
+        if($("#category02onView").val() === null){
+            alert("Select Category02");
+        }
+        if($("#sizeonView").val() === null){
+            alert("Select Size");
+        }
+
         let category01onView = $("#category01onView").val().trim();
         let category02onView = $("#category02onView").val().trim();
         let sizeonView = $("#sizeonView").val().trim();
