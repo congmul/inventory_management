@@ -11,6 +11,7 @@ module.exports = function (app) {
     // HTML Route <--
 
     // --> API Route
+    // --> Get Route
     app.get("/api/cymbals/:category01onView/:category02onView/:sizeonView", (req, res) => {
         console.log(req.params);
         let firstCondition = {category01 : req.params.category01onView.toLowerCase()};
@@ -62,6 +63,32 @@ module.exports = function (app) {
     }
         
     });
+    // Get Route <--
+    // --> Put Route
+
+    app.put("/api/inventory", (req, res) =>{
+      console.log(req.body);
+      let updateData = {};
+      for( let key in req.body){
+        if(key === "ebay_price"){
+          console.log("ebay_price");
+          updateData[key] = req.body.ebay_price;
+        }else if(key === "website_price"){
+          console.log("website_price");
+          updateData[key] = req.body.website_price;
+        }
+      }
+      db.Inventory.update(updateData, {
+        where: {
+          id: req.body.id
+        }
+      }).then(data => {
+        res.json(data);
+      });
+    });
+
+    // Put Route <--
+
     // API Route <--
 
 }

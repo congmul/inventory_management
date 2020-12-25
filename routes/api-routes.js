@@ -57,6 +57,7 @@ module.exports = function(app) {
                 "category02": data[0].dataValues.Inventories[i].category02,
                 "size": data[0].dataValues.Inventories[i].size,
                 "description": data[0].dataValues.Inventories[i].description,
+                "cymbal_id" : data[0].dataValues.Inventories[i].id, 
                 "qty": data[0].dataValues.Inventories[i].qty,
                 "ebay_price": data[0].dataValues.Inventories[i].ebay_price,
                 "website_price": data[0].dataValues.Inventories[i].website_price

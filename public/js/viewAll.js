@@ -140,8 +140,8 @@ $(document).ready(() => {
                     <td>${res[i].description}</td>
                     <td>${res[i].category02}</td>
                     <td>${res[i].size} inch</td>
-                    <td contenteditable='true'>$ ${res[i].ebay_price}</td>
-                    <td contenteditable='true'>$ ${res[i].website_price}</td>
+                    <td contenteditable='true' class="ebay_price" data-id="${res[i].cymbal_id}">$ ${res[i].ebay_price}</td>
+                    <td contenteditable='true' class="website_price" data-id="${res[i].cymbal_id}">$ ${res[i].website_price}</td>
                 </tr>`
             }
             ebayNet = ebayGross * 0.88;
@@ -154,6 +154,7 @@ $(document).ready(() => {
 <div id="packageWithCymbal" class="modal">
     <div class="modal-content">
         <h5>${res[0].category} ${res[0].description_pack} |  ${res[0].code_pack}  |  $${res[0].dealer_price}</h5>
+        <p id="confirm-message" style="color:red; font-size:14px; display:none; padding:5px; width:100%; background-color:#ccc; text-align:center;">The Price is changed</p>
             <table class="highlight centered" style="margin-top:25px;">
                 <thead style="font-weight: bold;">
                     <tr>
@@ -212,6 +213,53 @@ $(document).ready(() => {
         })
     });
 
+    // Editing eBay / Website _ Price
+
+    $(document).on("focusout",".ebay_price", (e) => {
+        e.preventDefault();
+        let id = $(e.target).data("id");
+        let ebay_price = e.target.innerText.substring(2);
+        console.log("ID");
+        console.log(id);
+        console.log("TEXT");
+        console.log(ebay_price);
+        $.ajax("/api/inventory", {
+            type: "PUT",
+            data: {
+                "id": id,
+                "ebay_price": ebay_price
+            }
+        }).then(data => {
+            $("#confirm-message").css("display","block");
+            setTimeout(()=>{
+                $("#confirm-message").css("display","none");
+            }, 3000);
+            
+        });
+    });
+
+    $(document).on("focusout",".website_price", (e) => {
+        e.preventDefault();
+        let id = $(e.target).data("id");
+        let website_price = e.target.innerText.substring(2);
+        console.log("ID");
+        console.log(id);
+        console.log("TEXT");
+        console.log(website_price);
+        $.ajax("/api/inventory", {
+            type: "PUT",
+            data: {
+                "id": id,
+                "website_price": website_price
+            }
+        }).then(data => {
+            $("#confirm-message").css("display","block");
+            setTimeout(()=>{
+                $("#confirm-message").css("display","none");
+            }, 3000);
+            
+        });
+    });
 
      // ======================== FOR Shure Parts ================================================
 
