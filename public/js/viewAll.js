@@ -146,7 +146,6 @@ $(document).ready(() => {
             }
             ebayNet = ebayGross * 0.88;
             websiteNet = websiteGross * 0.96;
-
             let ebayMargin =  (ebayNet - res[0].dealer_price) / res[0].dealer_price  * 100;
             let websiteMargin = (websiteNet - res[0].dealer_price) / res[0].dealer_price  * 100;
 
@@ -154,7 +153,7 @@ $(document).ready(() => {
 <div id="packageWithCymbal" class="modal">
     <div class="modal-content">
         <h5>${res[0].category} ${res[0].description_pack} |  ${res[0].code_pack}  |  $${res[0].dealer_price}</h5>
-        <p id="confirm-message" style="color:red; font-size:14px; display:none; padding:5px; width:100%; background-color:#ccc; text-align:center;">The Price is changed</p>
+        <p id="confirm-message" style="color:red; font-size:14px; display:none; padding:5px; width:100%; background-color:#ccc; text-align:center;">The Price is changed. Please click refresh button on bottom.</p>
             <table class="highlight centered" style="margin-top:25px;">
                 <thead style="font-weight: bold;">
                     <tr>
@@ -202,6 +201,7 @@ $(document).ready(() => {
         </div>
     </div>
     <div class="modal-footer">
+        <a href="#!" class="waves-effect waves-green btn-flat" data-id="${id}" id="modal-refresh">Refresh</a>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
     </div>
 </div>`
@@ -233,7 +233,7 @@ $(document).ready(() => {
             $("#confirm-message").css("display","block");
             setTimeout(()=>{
                 $("#confirm-message").css("display","none");
-            }, 3000);
+            }, 4000);
             
         });
     });
@@ -256,9 +256,111 @@ $(document).ready(() => {
             $("#confirm-message").css("display","block");
             setTimeout(()=>{
                 $("#confirm-message").css("display","none");
-            }, 3000);
-            
+            }, 4000);
         });
+    });
+
+
+    // Refresh Modal after clicking refresh button.
+    $(document).on("click", "#modal-refresh", (e) =>{
+        e.preventDefault();
+        console.log($(e.target));
+        $("#packageWithCymbal").modal('close');
+
+        //--> REFRESH MODAL
+        let id = $(e.target).data("id");
+        $.ajax("/api/package/" + id, {
+            type: "GET"
+        }).then(res => {
+            console.log(res);
+            let ebayGross = 0;
+            let websiteGross = 0;
+            let ebayNet = 0;
+            let websiteNet = 0;
+            
+            let cymbalsQuery = ``;
+            for(let i = 0; i < res.length; i++){
+                ebayGross += res[i].ebay_price;
+                websiteGross += res[i].website_price;
+                cymbalsQuery += `
+                <tr>
+                    <td>${res[i].code}</td>
+                    <td>${res[i].description}</td>
+                    <td>${res[i].category02}</td>
+                    <td>${res[i].size} inch</td>
+                    <td contenteditable='true' class="ebay_price" data-id="${res[i].cymbal_id}">$ ${res[i].ebay_price}</td>
+                    <td contenteditable='true' class="website_price" data-id="${res[i].cymbal_id}">$ ${res[i].website_price}</td>
+                </tr>`
+            }
+            ebayNet = ebayGross * 0.88;
+            websiteNet = websiteGross * 0.96;
+            let ebayMargin =  (ebayNet - res[0].dealer_price) / res[0].dealer_price  * 100;
+            let websiteMargin = (websiteNet - res[0].dealer_price) / res[0].dealer_price  * 100;
+
+            let query = `  
+<div id="packageWithCymbal" class="modal">
+    <div class="modal-content">
+        <h5>${res[0].category} ${res[0].description_pack} |  ${res[0].code_pack}  |  $${res[0].dealer_price}</h5>
+        <p id="confirm-message" style="color:red; font-size:14px; display:none; padding:5px; width:100%; background-color:#ccc; text-align:center;">The Price is changed. Please click refresh button on bottom.</p>
+            <table class="highlight centered" style="margin-top:25px;">
+                <thead style="font-weight: bold;">
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Size</th>
+                        <th>eBay Price</th>
+                        <th>Website Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ${cymbalsQuery}
+                </tbody>
+            </table>
+        <!--Gross Fee Margin-->
+        <div style="margin-top:25px;">
+        <table class="highlight centered">
+<thead style="font-weight: bold;">
+<tr>
+                        <th>Platform</th>
+                        <th>Gross</th>
+                        <th>Fee</th>
+                        <th>Net</th>
+                        <th>Margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">ebay : </td>
+                        <td>$ ${ebayGross}</td>
+                        <td contenteditable='true'>12%</td>
+                        <td>$ ${ebayNet.toFixed(2)}</td>
+                        <td>${ebayMargin.toFixed(2)}%</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">website : </td>
+                        <td>$ ${websiteGross}</td>
+                        <td contenteditable='true'>4%</td>
+                        <td>$ ${websiteNet.toFixed(2)}</td>
+                        <td>${websiteMargin.toFixed(2)}%</td>
+                    </tr>
+                </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="waves-effect waves-green btn-flat" data-id="${id}" id="modal-refresh">Refresh</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+    </div>
+</div>`
+          displayPackwithCymbals.html(query);
+
+          // Implement modal and Open it manually
+          $("#packageWithCymbal").modal();
+          $("#packageWithCymbal").modal('open');
+        })
+        // REFRESH MODAL <--
+
     });
 
      // ======================== FOR Shure Parts ================================================
