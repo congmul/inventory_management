@@ -4,6 +4,7 @@ $(document).ready(() => {
     const displayPackwithCymbals = $("#displayPackwithCymbals");
     const searchWindowOnView = $("#searchWindowOnView");
     const addCymbalsWindow = $("#addCymbalsWindow");
+    const addCymbalPacksWindow = $("#addCymbalPacksWindow");
 
     // $("#cymbal-menu-On-view").on("click", (e) => {
     //     e.preventDefault();
@@ -490,7 +491,7 @@ $(document).ready(() => {
                     </select>
                 </div>
             </div>
-            <button id="add-Cymbal-Btn" class="btn black-text blue lighten-4 waves-effect">Add</button>
+            <button id="add-Cymbal-Btn" class="btn white-text waves-effect blue">Add</button>
         </form>
     </div>
 </div>
@@ -555,6 +556,105 @@ $(document).ready(() => {
 
     // ======================== FOR Add Cymbal Packs ================================================
 
+    $("#addCymbalPacks").on("click", (e) =>{
+        e.preventDefault();
+        let query =`
+        <div id="addCymbalPacksModal" class="modal">
+            <div class="modal-content">
+            <!-- Inside Modal -->
 
+            <div class="container center" style="margin-bottom: 2%;">
+    <div class="row">
+        <h3 class="" style="margin-bottom: 2%;">New Cymbal Package</h3>
+    </div>
+    <div class="row">
+        <div>
+        <a href="/uploadPackCSV" class="left btn white-text waves-effect blue" style="margin-bottom: 50px;">Upload CSV file</a>
+        </div>
+        <form class="col s12 m12 l12 newPackage">
+            <div class="row">
+                <div class="col s12 m2">
+                    <label for="category" class="left black-text">Category <sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+                <div class="col s12 m10">
+                    <select name="category" class="browser-default post_input_boader validateCat" id="category">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Zildjian">Zildjian</option>
+                        <option value="Sabian">Sabian</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Description" id="description_input" type="text" class="validate"
+                        required="true">
+                    <label for="Description" class="black-text">Description<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Description" id="product_Code_input" type="text" class="validate"
+                        required="true">
+                    <label for="Description" class="black-text">Product Code<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Description" id="dealer_Price_input" type="text" class="validate"
+                        required="true">
+                    <label for="Description" class="black-text">Dealer Price<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <button id="addPackBtn" class="btn white-text waves-effect blue">Add</button>
+        </form>
+    </div>
+</div>
+
+            <!-- Inside Modal -->
+            </div>
+            <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-grey btn-flat">close</a>
+        </div>
+        </div>
+
+        `;
+        addCymbalPacksWindow.html(query);
+
+        // Implement modal and Open it manually
+        $("#addCymbalPacksModal").modal();
+        $("#addCymbalPacksModal").modal('open');
+    });
+
+
+    $(document).on("click","#addPackBtn", (e) => {
+        e.preventDefault();
+        
+        let category = $("#category");
+        let descriptionInput = $("#description_input");
+        let productCodeInput = $("#product_Code_input");
+        let dealerPriceInput = $("#dealer_Price_input");
+
+        const newPackage = {
+            category : category.val(),
+            description : descriptionInput.val(),
+            group_code : productCodeInput.val(),
+            dealer_price : dealerPriceInput.val()
+        }
+
+        $.post("/api/cymbalPack", newPackage).then((result) =>{
+            console.log(result);
+            category.val("");
+            descriptionInput.val("");
+            productCodeInput.val("");
+            dealerPriceInput.val("");
+
+            alert("Added the pack");
+            window.location.replace("/cymbals");
+        });
+    });
 
 });
