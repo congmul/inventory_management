@@ -1,57 +1,142 @@
 <div class="row" id="fixedScreenSize">
     <div class="col s2 m2 l2" id="leftMenu">
         <div class="main-menu">
-            <a href="/"><p class="leftMenuLetter"><i class="fas fa-columns iconMargin"></i> Dashboard</p></a>
-            <a href="/cymbals"><p class="leftMenuLetter"><i class="fas fa-bullseye iconMargin"></i> Cymbals</p></a>
-            <a href="#"><p class="leftMenuLetter"><i class="fas fa-concierge-bell iconMargin"></i> Orders</p></a>
-            <a href="#"><p class="leftMenuLetter"><i class="fas fa-shopping-bag iconMargin"></i> Purchase</p></a>
-            <a href="#"><p class="leftMenuLetter"><i class="fas fa-boxes iconMargin"></i> Products</p></a>
+            <a href="/">
+                <p class="leftMenuLetter"><i class="fas fa-columns iconMargin"></i> Dashboard</p>
+            </a>
+            <a href="/cymbals">
+                <p class="leftMenuLetter"><i class="fas fa-bullseye iconMargin"></i> Cymbals</p>
+            </a>
+            <a href="#">
+                <p class="leftMenuLetter"><i class="fas fa-concierge-bell iconMargin"></i> Orders</p>
+            </a>
+            <a href="#">
+                <p class="leftMenuLetter"><i class="fas fa-shopping-bag iconMargin"></i> Purchase</p>
+            </a>
+            <a href="#">
+                <p class="leftMenuLetter"><i class="fas fa-boxes iconMargin"></i> Products</p>
+            </a>
         </div>
     </div>
     <div class="col s10 m10 l10" id="rightMenu">
-            <div class="row center-align">
-                <a href="/viewAll">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-search-plus"> View All</i>
-                        </div>
-                    </div>
-                </a>
-                <a href="/checkGross">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-file-invoice-dollar"> Check Gross</i>
-                        </div>
-                    </div>
-                </a>
-                <a href="/newItem">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-plus"> New Item</i>
-                        </div>
-                    </div>
-                </a>
-                <a href="/newPackage">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-folder-plus"> New Pack</i>
-                        </div>
-                    </div>
-                </a>
-                <a href="/itemIn">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-plus-square"> Item IN</i>
-                        </div>
-                    </div>
-                </a>
-                <a href="/itemOut">
-                    <div class="col s12 m6">
-                        <div class="card-panel hoverable">
-                            <i class="fas fa-minus-square"> Item OUT</i>
-                        </div>
-                    </div>
-                </a>
+        <div class="row">
+            <div class="col s4 m4 l4">
+                <div class="row indexBoxEach z-depth-3">
+                    <p>SALES CYMBALS THIS MONTH</p>
+                    <p class="indexGross"><span id="grossThisMonth">$ 5,600.00</span><i class="fas fa-briefcase right"></i></p>
+                </div>
             </div>
+            <div class="col s4 m4 l4">
+                <div class="row indexBoxEach z-depth-3">
+                    <p>SALES CYMBALS LAST MONTH</p>
+                    <p class="indexGross"><span id="grossLastMonth">$ 12,600.00</span><i class="fas fa-briefcase right"></i></p>
+                </div>
+            </div>
+            <div class="col s4 m4 l4">
+                <div class="row indexBoxEach z-depth-3">
+                    <p>SALES CYMBALS THIS YEAR</p>
+                    <p class="indexGross"><span id="grossLastMonth">$ 152,600.00</span><i class="fas fa-briefcase right"></i></p>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="indexBoxEach z-depth-3" style="height:200px;">Analysis</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 m4 l4">
+                <div class="row indexBoxEach z-depth-3" style="height:170px;">
+                    <p>NOTICE</p>
+                    <p>test</p>
+                </div>
+            </div>
+            <div class="col s8 m8 l8">
+                <div class="row indexBoxEach z-depth-3" style="height:auto;">
+                    <p>TRACKING PURCHASING ITEM</p>
+                     <table class="highlight centered">
+                        <thead style="font-weight: bold; color:black">
+                    <tr>
+                        <th>Product</th>
+                        <th>Tracking #</th>
+                        <th>Carrer</th>
+                        <th>ETA</th>
+                        <th>Delivered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shure UR2</td>
+                        <td>981251723</td>
+                        <td>FedEx</td>
+                        <td>12/31</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>Shure UR1</td>
+                        <td>981251236</td>
+                        <td>UPS</td>
+                        <td>12/11</td>
+                        <td>O</td>
+                    </tr>
+                </tbody>
+        </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        {{!-- <div class="row center-align" style="display: none;">
+            <a href="/viewAll">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-search-plus"> View All</i>
+                    </div>
+                </div>
+            </a>
+            <a href="/checkGross">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-file-invoice-dollar"> Check Gross</i>
+                    </div>
+                </div>
+            </a>
+            <a href="/newItem">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-plus"> New Item</i>
+                    </div>
+                </div>
+            </a>
+            <a href="/newPackage">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-folder-plus"> New Pack</i>
+                    </div>
+                </div>
+            </a>
+            <a href="/itemIn">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-plus-square"> Item IN</i>
+                    </div>
+                </div>
+            </a>
+            <a href="/itemOut">
+                <div class="col s12 m6">
+                    <div class="card-panel hoverable">
+                        <i class="fas fa-minus-square"> Item OUT</i>
+                    </div>
+                </div>
+            </a>
+        </div> --}}
     </div>
 </div>
