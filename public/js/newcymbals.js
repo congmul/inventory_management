@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     $("#add-Cymbal-Btn").on("click", (e) => {
         e.preventDefault();
-        
+        console.log("test");
         const newItem = {
             category01 : category01.val().trim(),
             category02 : category02.val().trim(),

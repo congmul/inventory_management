@@ -1,17 +1,49 @@
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  background-color: rgb(230, 230, 230);
 }
 
 main {
   flex: 1 0 auto;
 }
 
+.footer-customize{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
 
 form.signup,
 form.login {
   margin-top: 50px;
+}
+
+/* Menu Style */
+#leftMenu{
+  padding: 50px 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.leftMenuLetter{
+  margin-bottom:20px;
+}
+.iconMargin{
+  margin-right:10px;
+}
+.main-menu a{
+    color:black;
+    font-size: 20px;
+}
+
+#rightMenu{
+  padding: 50px;
+  margin-bottom: 50px;
+}
+/* Menu Style */
+
+.resultWindow{
+  background-color: white;
+  padding: 10px;
+  height: auto;
 }
 
 ul li a {
@@ -21,7 +53,7 @@ ul li a {
 
 a {
   color:black;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 @media (max-width: 992px){

@@ -18,6 +18,25 @@ module.exports = function (app) {
   // --> API ROUTE
   // --> GET ROUTE!!
   // Add New Item Page with Package ID & Name
+  app.get("/api/addcymbals/", (req, res) => {
+    if (req.user) {
+      let packageLists = [];
+      db.Packages.findAll().then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          let tempObj = {}
+          tempObj["id"] = data[i].dataValues.id;
+          tempObj["discription"] = data[i].dataValues.description;
+          packageLists.push(tempObj);
+        }
+        console.log(packageLists);
+        res.json({res: packageLists});
+      });
+    } else {
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
+
   app.get("/newcymbals", (req, res) => {
     if (req.user) {
       let packageLists = [];

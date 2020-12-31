@@ -3,53 +3,54 @@ $(document).ready(() => {
     // ======================== FOR Cymbals ================================================
     const displayPackwithCymbals = $("#displayPackwithCymbals");
     const searchWindowOnView = $("#searchWindowOnView");
+    const addCymbalsWindow = $("#addCymbalsWindow");
 
-    $("#cymbal-menu-On-view").on("click", (e) => {
-        e.preventDefault();
+    // $("#cymbal-menu-On-view").on("click", (e) => {
+    //     e.preventDefault();
 
-        let query = `
-        <form class="col s12 m12 l12">
-            <div class="row">
-                <div class="col s12 m3">
-                    <select name="category01" class="browser-default post_input_boader validateCat" id="category01onView">
-                        <option value="all" disabled selected>Category01</option>
-                        <option value="all">All</option>
-                        <option value="zildjian">Zildjian</option>
-                        <option value="sabian">Sabian</option>
-                    </select>
-                </div>
-                <div class="col s12 m3">
-                    <select name="category02" class="browser-default post_input_boader validateCat" id="category02onView">
-                        <option value="all" disabled selected>Category02</option>
-                        <option value="all">All</option>
-                        <option value="ride">Ride</option>
-                        <option value="hi-hats">Hihats</option>
-                        <option value="crash">Crash</option>
-                        <option value="splash">Splash</option>
-                    </select>
-                </div>
-                <div class="col s12 m3">
-                    <select name="Size" class="browser-default post_input_boader validateCat" id="sizeonView">
-                        <option value="all" disabled selected>Size</option>
-                        <option value="all">All</option>
-                        <option value="14">14 inch</option>
-                        <option value="15">15 inch</option>
-                        <option value="16">16 inch</option>
-                        <option value="17">17 inch</option>
-                        <option value="18">18 inch</option>
-                        <option value="19">19 inch</option>
-                        <option value="20">20 inch</option>
-                        <option value="21">21 inch</option>
-                    </select>
-                </div>
-                <div class="col s12 m3">
-                <button id="searchCymbals" class="btn black-text waves-effect">Search</button>
-                </div>
-            </div>
-        </form>
-        `;
-        searchWindowOnView.html(query);
-    });
+    //     let query = `
+    //     <form class="col s12 m12 l12">
+    //         <div class="row">
+    //             <div class="col s12 m3">
+    //                 <select name="category01" class="browser-default post_input_boader validateCat" id="category01onView">
+    //                     <option value="all" disabled selected>Category01</option>
+    //                     <option value="all">All</option>
+    //                     <option value="zildjian">Zildjian</option>
+    //                     <option value="sabian">Sabian</option>
+    //                 </select>
+    //             </div>
+    //             <div class="col s12 m3">
+    //                 <select name="category02" class="browser-default post_input_boader validateCat" id="category02onView">
+    //                     <option value="all" disabled selected>Category02</option>
+    //                     <option value="all">All</option>
+    //                     <option value="ride">Ride</option>
+    //                     <option value="hi-hats">Hihats</option>
+    //                     <option value="crash">Crash</option>
+    //                     <option value="splash">Splash</option>
+    //                 </select>
+    //             </div>
+    //             <div class="col s12 m3">
+    //                 <select name="Size" class="browser-default post_input_boader validateCat" id="sizeonView">
+    //                     <option value="all" disabled selected>Size</option>
+    //                     <option value="all">All</option>
+    //                     <option value="14">14 inch</option>
+    //                     <option value="15">15 inch</option>
+    //                     <option value="16">16 inch</option>
+    //                     <option value="17">17 inch</option>
+    //                     <option value="18">18 inch</option>
+    //                     <option value="19">19 inch</option>
+    //                     <option value="20">20 inch</option>
+    //                     <option value="21">21 inch</option>
+    //                 </select>
+    //             </div>
+    //             <div class="col s12 m3">
+    //             <button id="searchCymbals" class="btn black-text waves-effect">Search</button>
+    //             </div>
+    //         </div>
+    //     </form>
+    //     `;
+    //     searchWindowOnView.html(query);
+    // });
     
 
     $(document).on("click", "#searchCymbals", (e) =>{
@@ -363,10 +364,148 @@ $(document).ready(() => {
 
     });
 
-     // ======================== FOR Shure Parts ================================================
+     // ======================== FOR Add Cymbals ================================================
 
-    $("#shure-menu-On-view").on("click", (e) => {
+    $(document).on("click","#addCymbals" , (e) => {
         e.preventDefault();
-        searchWindowOnView.text("Not Yet!!");
+        
+        $.ajax("api/addcymbals/", {
+            type: "GET"
+        }).then(res => { 
+            console.log(res);
+
+            addCymbalQuery = `
+            <div id="addCymbalsModal" class="modal">
+            <div class="modal-content">
+            <!-- Inside Modal -->
+
+            <div class="center" style="margin-bottom: 2%;">
+    <div class="row">
+        <h3 class="" style="margin-bottom: 2%;">New Cymbal</h3>
+    </div>
+    <div class="row">
+        <div>
+        <a href="/uploadCymbalsCSV" class="left btn black-text blue lighten-4 waves-effect" style="margin-bottom: 50px;">Upload CSV file</a>
+        </div>
+        <form class="col s12 m12 l12 newItem">
+            <div class="row">
+                <div class="col s12 m2">
+                    <label for="category01" class="left black-text">Category01 <sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+                <div class="col s12 m10">
+                    <select name="category01" class="browser-default post_input_boader validateCat" id="category01">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="zildjian">Zildjian</option>
+                        <option value="sabian">Sabian</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m2">
+                    <label for="category02" class="left black-text">Category02 <sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+                <div class="col s12 m10">
+                    <select name="category02" class="browser-default post_input_boader validateCat" id="category02">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="ride">Ride</option>
+                        <option value="hihats">Hihats</option>
+                        <option value="crash">Crash</option>
+                        <option value="splash">Splash</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m2">
+                    <label for="cymbal-size" class="left black-text">Size <sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+                <div class="col s12 m10">
+                    <select name="cymbal-size" class="browser-default post_input_boader validateCat" id="cymbal-size">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="14">14 inch</option>
+                        <option value="15">15 inch</option>
+                        <option value="16">16 inch</option>
+                        <option value="17">17 inch</option>
+                        <option value="18">18 inch</option>
+                        <option value="20">20 inch</option>
+                        <option value="21">21 inch</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Description" id="description-item-input" type="text" class="validate"
+                        required="true">
+                    <label for="Description" class="black-text">Description<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="item-code-input" id="item-code-input" type="text" class="validate"
+                        required="true">
+                    <label for="item-code-input" class="black-text">Item Code<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="QTY" id="qty-input" type="text" class="validate"
+                        required="true">
+                    <label for="QTY" class="black-text">QTY<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="ebay-price-input" id="ebay-price-input" type="text" class="validate"
+                        required="true">
+                    <label for="ebay-price-input" class="black-text">eBay Price<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="website-price-input" id="website-price-input" type="text" class="validate"
+                        required="true">
+                    <label for="website-price-input" class="black-text">Website Price<sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m2">
+                    <label for="Group Code " class="left black-text">Group Code <sup><i
+                                class="fas fa-star-of-life red-text starIcon"></i></sup></label>
+                </div>
+                <div class="col s12 m10">
+                    <select name="Group Code " class="browser-default post_input_boader validateCat" id="group-id">
+                        <option value="" disabled selected>Choose your option</option>
+                        {{#each packageLists}}
+                        <option value="{{this.id}}">{{this.discription}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <button id="add-Cymbal-Btn" class="btn black-text blue lighten-4 waves-effect">Add</button>
+        </form>
+    </div>
+</div>
+
+            <!-- Inside Modal -->
+            </div>
+            <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-grey btn-flat">close</a>
+        </div>
+        </div>
+                `;
+                addCymbalsWindow.html(addCymbalQuery);
+        
+                // Implement modal and Open it manually
+                $("#addCymbalsModal").modal();
+                $("#addCymbalsModal").modal('open');
+
+        });
     });
 });

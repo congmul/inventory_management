@@ -36,9 +36,9 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/viewAll", (req, res) => {
+  app.get("/cymbals", (req, res) => {
     if (req.user) {
-      res.render("viewAll");
+      res.render("cymbals");
     }else{
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
