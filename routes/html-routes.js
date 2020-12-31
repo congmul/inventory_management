@@ -20,25 +20,33 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  app.get("/newItem", (req, res) => {
-    if (req.user) {
-      res.render("newItem");
-    }else{
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-    }
-  });
+  // app.get("/newItem", (req, res) => {
+  //   if (req.user) {
+  //     res.render("newItem");
+  //   }else{
+  //     res.sendFile(path.join(__dirname, "../public/login.html"));
+  //   }
+  // });
 
-  app.get("/newPackage", (req, res) => {
-    if (req.user) {
-      res.render("newPackage");
-    }else{
-      res.sendFile(path.join(__dirname, "../public/login.html"));
-    }
-  });
+  // app.get("/newPackage", (req, res) => {
+  //   if (req.user) {
+  //     res.render("newPackage");
+  //   }else{
+  //     res.sendFile(path.join(__dirname, "../public/login.html"));
+  //   }
+  // });
 
   app.get("/cymbals", (req, res) => {
     if (req.user) {
       res.render("cymbals");
+    }else{
+      res.sendFile(path.join(__dirname, "../public/login.html"));
+    }
+  });
+
+  app.get("/orders", (req, res) => {
+    if (req.user) {
+      res.render("orders");
     }else{
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }

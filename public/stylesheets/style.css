@@ -19,9 +19,10 @@ form.login {
 
 /* Menu Style */
 #leftMenu{
+  position: fixed;
+  left: 0;
   padding: 50px 20px;
   font-size: 22px;
-  font-weight: bold;
 }
 .leftMenuLetter{
   margin-bottom:20px;
@@ -35,6 +36,7 @@ form.login {
 }
 
 #rightMenu{
+  margin-left: 250px;
   padding: 50px;
   margin-bottom: 50px;
 }
