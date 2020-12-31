@@ -372,8 +372,12 @@ $(document).ready(() => {
         $.ajax("api/addcymbals/", {
             type: "GET"
         }).then(res => { 
-            console.log(res);
-
+            let categoryQuery = ``;
+            for(let i = 0; i < res.res.length; i++){
+                console.log(res.res[i].id);
+                console.log(res.res[i].discription);
+                categoryQuery += `<option value="${res.res[i].id}">${res.res[i].discription}</option>`;
+            }
             addCymbalQuery = `
             <div id="addCymbalsModal" class="modal">
             <div class="modal-content">
@@ -385,7 +389,7 @@ $(document).ready(() => {
     </div>
     <div class="row">
         <div>
-        <a href="/uploadCymbalsCSV" class="left btn black-text blue lighten-4 waves-effect" style="margin-bottom: 50px;">Upload CSV file</a>
+        <a href="/uploadCymbalsCSV" class="left btn white-text waves-effect blue" style="margin-bottom: 50px;">Upload CSV file</a>
         </div>
         <form class="col s12 m12 l12 newItem">
             <div class="row">
@@ -482,9 +486,7 @@ $(document).ready(() => {
                 <div class="col s12 m10">
                     <select name="Group Code " class="browser-default post_input_boader validateCat" id="group-id">
                         <option value="" disabled selected>Choose your option</option>
-                        {{#each packageLists}}
-                        <option value="{{this.id}}">{{this.discription}}</option>
-                        {{/each}}
+                        ${categoryQuery}
                     </select>
                 </div>
             </div>
@@ -508,4 +510,51 @@ $(document).ready(() => {
 
         });
     });
+
+
+    $(document).on("click","#add-Cymbal-Btn", (e) => {
+        e.preventDefault();
+        console.log("test");
+        let category01 = $("#category01");
+        let category02 = $("#category02");
+        let cymbalSize = $("#cymbal-size");
+        let description = $("#description-item-input");
+        let code = $("#item-code-input");
+        let qty = $("#qty-input");
+        let ebay_price = $("#ebay-price-input");
+        let website_price = $("#website-price-input");
+        let groupId = $("#group-id");
+        const newItem = {
+            category01 : category01.val().trim(),
+            category02 : category02.val().trim(),
+            size : cymbalSize.val().trim(),
+            description : description.val().trim().toLowerCase(),
+            code : code.val().trim().toLowerCase(),
+            qty : qty.val().trim(),
+            ebay_price : ebay_price.val().trim(),
+            website_price : website_price.val().trim(),
+            group_id : groupId.val().trim(),
+        }
+        console.log(newItem);
+        $.post("/api/newcymbal", newItem).then((result) =>{
+            console.log(result);
+            category01.val("");
+            category02.val("");
+            cymbalSize.val("");
+            description.val("");
+            code.val("");
+            qty.val("");
+            ebay_price.val("");
+            website_price.val("");
+            groupId.val("");
+            alert("Added the cymbal");
+            window.location.replace("/cymbals");
+        });
+    });
+
+
+    // ======================== FOR Add Cymbal Packs ================================================
+
+
+
 });
