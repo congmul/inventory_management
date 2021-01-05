@@ -20,22 +20,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  // app.get("/newItem", (req, res) => {
-  //   if (req.user) {
-  //     res.render("newItem");
-  //   }else{
-  //     res.sendFile(path.join(__dirname, "../public/login.html"));
-  //   }
-  // });
-
-  // app.get("/newPackage", (req, res) => {
-  //   if (req.user) {
-  //     res.render("newPackage");
-  //   }else{
-  //     res.sendFile(path.join(__dirname, "../public/login.html"));
-  //   }
-  // });
-
   app.get("/cymbals", (req, res) => {
     if (req.user) {
       console.log("test");
@@ -92,37 +76,9 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/login.html"));
     }
   });
-  app.get("/api/ebayCode/:code/:expire", (req, res) =>{
-    console.log(req.params.code);
-    console.log(req.params.expire);
+  app.get("/api/ebayCode/", (req, res) =>{
+    console.log(req.query);
+    console.log(req.query.code);
+    console.log(req.query.expires_in);
   })
-  // app.get("/viewAll", (req, res) => {
-  //   if (req.user) {
-  //   db.Inventory.findAll({
-  //     include: db.Packages
-  //   } 
-  //   ).then((data) => {
-  //     let allItems = [];
-  //     for(let i = 0; i < data.length; i++){
-  //       allItems.push({
-  //         "group_id": data[i].dataValues.Package.dataValues.id,
-  //         "group_code": data[i].dataValues.Package.dataValues.group_code,
-  //         "category01": data[i].dataValues.category01,
-  //         "category02": data[i].dataValues.category02,
-  //         "size": data[i].dataValues.size,
-  //         "description": data[i].dataValues.description,
-  //         "code": data[i].dataValues.code,
-  //         "qty": data[i].dataValues.qty,
-  //         "ebay_price": data[i].dataValues.ebay_price,
-  //         "website_price": data[i].dataValues.website_price
-  //       });
-  //     }
-  //     console.log(allItems);
-
-  //     res.render("viewAll", {allItems: allItems});
-  //   });
-  //   }else{
-  //     res.sendFile(path.join(__dirname, "../public/login.html"));
-  //   }
-  // });
 };
