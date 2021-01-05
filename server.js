@@ -3,6 +3,10 @@ const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
@@ -39,10 +43,22 @@ require("./routes/api-routes.js")(app);
 require("./routes/newItem-routes.js")(app);
 require("./routes/newPackage-routes.js")(app);
 require("./routes/viewAll-routes.js")(app);
+require("./routes/ebayAPI.js")(app);
 
 // Syncing our database and logging a message to the user upon success
+// db.sequelize.sync().then(function() {
+//   app.listen(PORT, function() {
+//     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+//   });
+// });
+const certOptions = {
+  key: fs.readFileSync(path.resolve('./public/config/localdomain.insecure.key')),
+  cert: fs.readFileSync(path.resolve('./public/config/localdomain.crt')),
+}
+
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  https.createServer(certOptions, app)
+  .listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit https://localhost:%s/ in your browser.", PORT, PORT);
   });
 });

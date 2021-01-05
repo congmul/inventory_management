@@ -14,6 +14,8 @@
   "dependencies": {
     "bcryptjs": "2.4.3",
     "dotenv": "^8.2.0",
+    "ebay-node-api": "^2.8.9",
+    "ebay-oauth-nodejs-client": "^1.2.1",
     "express": "^4.17.0",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.16.1",
